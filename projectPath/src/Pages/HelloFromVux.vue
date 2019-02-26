@@ -6,8 +6,6 @@
     <!--</div>-->
     <x-header :right-options="{showMore: true}"  @on-click-more="showMenus = true">with more menu</x-header>
     <group label-width="4.5em" label-margin-right="2em" label-align="right">
-      <!--<cell title="Cell" value="value" is-link></cell>-->
-      <!--<cell title="Cell" value="value" is-link value-align="left"></cell>-->
       <x-input title="用户名" required type="text" ref="refcode" placeholder="请输入用户名"
                :should-toast-error=true
                :is-type = "codeValue"
@@ -24,30 +22,13 @@
       <x-textarea title="自我介绍" placeholder="自我介绍" v-model="TestFrom.introduction" :show-counter="false" :rows="3"></x-textarea>
     </group>
     <x-button type="primary" style="border-radius:99px;margin-top:30px" :disabled="disabled" @click.native="SubmitForm">primary</x-button>
-    <tabbar>
-      <tabbar-item @on-item-click="ToBaidu">
-        <img slot="icon" src="../assets/image/1.png">
-        <span slot="label">Wechat</span>
-      </tabbar-item>
-      <tabbar-item show-dot>
-        <img slot="icon" src="../assets/image/2.png">
-        <span slot="label">Message</span>
-      </tabbar-item>
-      <tabbar-item selected>
-        <img slot="icon" src="../assets/image/3.png">
-        <span slot="label">Explore</span>
-      </tabbar-item>
-      <tabbar-item badge="2">
-        <img slot="icon" src="../assets/image/4.png">
-        <span slot="label">News</span>
-      </tabbar-item>
-    </tabbar>
+    <vuxrootbar :selected=2></vuxrootbar>
   </div>
 </template>
 
 <script>
 import { Group,Tabbar, AlertModule, TabbarItem, Cell, XHeader, XButton, XInput,Datetime,XTextarea} from 'vux'
-
+import Vuxrootbar from '@/components/Vuxrootbar'
 export default {
   components: {
     Group,
@@ -59,7 +40,8 @@ export default {
     XButton,
     Tabbar,
     TabbarItem,
-    AlertModule
+    AlertModule,
+    Vuxrootbar
   },
   data () {
     return {
@@ -88,18 +70,6 @@ export default {
     }
   },
   methods: {
-    ToBaidu () {
-      AlertModule.show({
-        title: 'VUX is Cool',
-        content: 'akdhajssjkdh',
-        onShow () {
-          console.log('Module: I\'m showing')
-        },
-        onHide () {
-          console.log('Module: I\'m hiding now')
-        }
-      })
-    },
     // 当输入框的值随时变换正确时候
     keyDown() {
       debugger

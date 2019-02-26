@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import HelloBox from '@/components/HelloBox'
-import HelloFromVux from '@/components/HelloFromVux'
+import HelloWorld from '../Pages/HelloWorld'
+import HelloBox from '../Pages/HelloBox'
+import HelloFromVux from '../Pages/HelloFromVux'
+import personlInfo from '../pages/personlInfo'
 
 Vue.use(Router)
 
@@ -22,6 +23,12 @@ export default new Router({
       path: '/HelloFromVux',
       name: 'HelloFromVux',
       component: HelloFromVux
-    }
+    },
+    {
+      path: '/personlInfo',
+      name: 'personlInfo',
+      component: personlInfo
+    },
+
   ]
 })

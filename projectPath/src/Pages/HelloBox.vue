@@ -1,17 +1,22 @@
 <template>
    <div>
-     <divider>hajf</divider>
-     <scroller lock-x height="200px" @on-scroll-bottom="onScrollBottom" ref="scrollerBottom" :scroll-bottom-offst="200">
+     <divider>下拉加载</divider>
+     <scroller lock-x height="200px"
+               @on-scroll-bottom="onScrollBottom"
+               ref="scrollerBottom"
+               :scroll-bottom-offst="200">
        <div class="box2">
          <p v-for="i in bottomCount">placeholder {{i}}</p>
          <load-more tip="loading"></load-more>
        </div>
      </scroller>
+     <vuxrootbar :selected=1></vuxrootbar>
    </div>
 </template>
 
 <script>
   import { Scroller, LoadMore, Divider  } from 'vux'
+  import Vuxrootbar from '@/components/Vuxrootbar'
   export default {
     name: "hello-box",
     data() {
@@ -24,7 +29,8 @@
     components: {
       Scroller,
       LoadMore,
-      Divider
+      Divider,
+      Vuxrootbar
     },
     methods: {
       onScrollBottom() {
@@ -33,7 +39,7 @@
         } else {
           this.onFetching = true
           setTimeout(() => {
-            this.bottomCount += 10
+            this.bottomCount += 5
             this.$nextTick(() => {
               this.$refs.scrollerBottom.reset()
             })
