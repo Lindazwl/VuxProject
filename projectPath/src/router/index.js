@@ -1,34 +1,44 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '../Pages/HelloWorld'
-import HelloBox from '../Pages/HelloBox'
-import HelloFromVux from '../Pages/HelloFromVux'
-import personlInfo from '../pages/personlInfo'
+import UserInfo from '../views/UserCenter/UserInfo'
+import homePage from '../views/homePage/index'
+import HelloFromVux from '../views/HelloFromVux'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
+export  const constantRouterMap = [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'homePage',
+      component:() => import('@/views/homePage/index')
     },
     {
-      path: '/HelloBox',
-      name: 'HelloBox',
-      component: HelloBox
+      path: '/login',
+      component: () => import('@/views/login/index'),
+      meta: {
+        hidden: true
+      }
     },
+    // {
+    //   path: '/HelloBox',
+    //   name: 'HelloBox',
+    //   component: HelloBox
+    // },
     {
       path: '/HelloFromVux',
       name: 'HelloFromVux',
-      component: HelloFromVux
+      component: HelloFromVux,
     },
-    {
-      path: '/personlInfo',
-      name: 'personlInfo',
-      component: personlInfo
-    },
+    // {
+    //   path: '/personlInfo',
+    //   name: 'personlInfo',
+    //   component: personlInfo
+    // },
 
   ]
+
+
+export default new Router({
+  scrollBehavior:() => ({ y:0 }),
+  routes: constantRouterMap
 })

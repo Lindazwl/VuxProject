@@ -1,6 +1,6 @@
 <template>
   <div>
-  <tabbar class="foobar" v-model="selected1">
+  <tabbar v-model="selected1">
     <tabbar-item link="/">
       <img slot="icon" src="../assets/image/1.png">
       <span slot="label">首页</span>
@@ -22,15 +22,15 @@
 </template>
 
 <script>
-  // import { Tabbar, TabbarItem } from 'vux'
+  import { Tabbar, TabbarItem } from 'vux'
   export default {
     name: "vux-rootbar",
     props: {
       selected: Number
     },
     components: {
-      // Tabbar,
-      // TabbarItem
+      Tabbar,
+      TabbarItem
     },
     data() {
       return {
@@ -44,11 +44,5 @@
 </script>
 
 <style scoped>
-.foobar {
-  width:100%;
-  position:fixed;
-  left:0;
-  bottom:0;
 
-}
 </style>
